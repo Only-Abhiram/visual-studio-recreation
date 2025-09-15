@@ -15,7 +15,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 h-full flex items-center justify-between">
         <div className="flex items-center space-x-8">
           <Link to="/" className="text-xl font-bold text-foreground">
-            Playground
+            Lorem 
           </Link>
           
           <div className="flex items-center space-x-1">

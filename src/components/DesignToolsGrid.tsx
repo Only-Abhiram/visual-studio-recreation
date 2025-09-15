@@ -38,7 +38,7 @@ const DesignToolsGrid = () => {
   ];
 
   return (
-    <section className="py-16 px-6">
+    <section id='tools' className="py-16 px-6">
       <div className="container mx-auto max-w-6xl">
         <h2 className="text-3xl font-bold text-center text-foreground mb-4">
           What do you want to design today?
@@ -48,7 +48,7 @@ const DesignToolsGrid = () => {
           <Link to="/design/new" className="btn-primary">
             Start new design
           </Link>
-          <button className="btn-secondary">
+          <button className="btn-secondary ">
             Upload and edit image
           </button>
         </div>
@@ -58,10 +58,10 @@ const DesignToolsGrid = () => {
             <Link
               key={tool.id}
               to={tool.path}
-              className="design-card group"
+              className="design-card group dark:bg-gray-900"
             >
               <div className="p-6 text-center">
-                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${tool.color} flex items-center justify-center text-2xl`}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br ${tool.color}  flex items-center justify-center text-2xl`}>
                   {tool.icon}
                 </div>
                 <h3 className="font-semibold text-card-foreground group-hover:text-primary transition-colors">

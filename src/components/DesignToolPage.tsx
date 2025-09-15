@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Play, Download, Share2 } from 'lucide-react';
+import { ArrowLeft, Play, Download, Share2, Upload } from 'lucide-react';
 
 const DesignToolPage = () => {
   const { toolId } = useParams();
-  
+  const [uploadedImage, setUploadedImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
   const toolNames: Record<string, string> = {
     'logo': 'Logo Designer',
     't-shirt': 'T-shirt Designer', 
@@ -33,7 +35,21 @@ const DesignToolPage = () => {
   };
 
   const toolName = toolNames[toolId || ''] || 'Design Tool';
-  const displayName = toolName.replace(' Designer', '').replace(' Creator', '').replace(' Maker', '').replace(' Generator', '');
+  const displayName = toolName
+    .replace(' Designer', '')
+    .replace(' Creator', '')
+    .replace(' Maker', '')
+    .replace(' Generator', '');
+
+  // Handle file upload
+  const handleUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => setUploadedImage(e.target?.result as string);
+      reader.readAsDataURL(file);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -113,16 +129,39 @@ const DesignToolPage = () => {
         <div className="flex-1 bg-muted p-8 flex items-center justify-center">
           <div className="bg-card rounded-2xl shadow-[var(--card-shadow)] p-8 max-w-2xl w-full aspect-square flex items-center justify-center">
             <div className="text-center">
-              <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-accent/30 rounded-2xl flex items-center justify-center text-4xl">
-                🎨
-              </div>
-              <h3 className="text-2xl font-bold mb-2">{displayName} Canvas</h3>
-              <p className="text-muted-foreground mb-6">
-                Start creating your {displayName.toLowerCase()} by selecting a template or customizing the design.
-              </p>
-              <button className="btn-primary">
-                Choose Template
-              </button>
+              {uploadedImage ? (
+                <img
+                  src={uploadedImage}
+                  alt="Uploaded"
+                  className="max-h-[400px] max-w-full mx-auto rounded-xl object-contain"
+                />
+              ) : (
+                <>
+                  <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary/20 to-accent/30 rounded-2xl flex items-center justify-center text-4xl">
+                    🎨
+                  </div>
+                  <h3 className="text-2xl font-bold mb-2">{displayName} Canvas</h3>
+                  <p className="text-muted-foreground mb-6">
+                    Upload an image to start customizing your {displayName.toLowerCase()}.
+                  </p>
+                  <div className='w-full flex justify-center'>
+                  <button
+                    onClick={() => fileInputRef.current?.click()}
+                    className="btn-primary flex items-center "
+                  >
+                    <Upload className="w-4 h-4 mr-2" />
+                    Upload
+                  </button>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    ref={fileInputRef}
+                    onChange={handleUpload}
+                    className="hidden"
+                  />
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

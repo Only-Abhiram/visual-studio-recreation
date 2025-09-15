@@ -40,16 +40,16 @@ const HeroSection = () => {
         </div>
         
         <h1 className="text-5xl font-bold text-foreground mb-6">
-          Welcome to Playground
+          Welcome to Lorem
         </h1>
         
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Design anything with thousands of templates to create logos, t-shirts, posters, and more.
         </p>
         
-        <button className="btn-primary text-lg px-8 py-4">
+        <a className="btn-primary text-lg px-8 py-4" href='#tools' >
           Get started for free
-        </button>
+        </a>
       </div>
     </section>
   );
