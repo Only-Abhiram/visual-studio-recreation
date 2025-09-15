@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Navigation = () => {
   const location = useLocation();
@@ -42,6 +43,7 @@ const Navigation = () => {
         </div>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
           <button className="btn-secondary">
             Log In
           </button>
