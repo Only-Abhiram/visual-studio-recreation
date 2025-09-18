@@ -10,6 +10,7 @@ import Templates from "./pages/Templates";
 import NewDesign from "./pages/NewDesign";
 import DesignToolPage from "./components/DesignToolPage";
 import NotFound from "./pages/NotFound";
+import Signup from "./components/login";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
         <Routes>
+          <Route path="/signup" element={<Signup/>}></Route>
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
             <Route path="templates" element={<Templates />} />
