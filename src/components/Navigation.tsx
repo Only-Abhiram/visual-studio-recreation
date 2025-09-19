@@ -23,7 +23,7 @@ const Navigation = () => {
               to="/"
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 isActive('/') && location.pathname === '/'
-                  ? 'text-foreground bg-slate-200' 
+                  ? 'text-foreground bg-slate-200 dark:bg-gray-900' 
                   : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
               }`}
             >
@@ -33,7 +33,7 @@ const Navigation = () => {
               to="/templates"
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
                 isActive('/templates')
-                  ? 'text-foreground bg-slate-200' 
+                  ? 'text-foreground bg-slate-200 dark:bg-gray-900' 
                   : 'text-muted-foreground hover:text-foreground hover:bg-accent/50'
               }`}
             >

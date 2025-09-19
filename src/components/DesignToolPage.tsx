@@ -9,7 +9,7 @@ const DesignToolPage = () => {
 
   const toolNames: Record<string, string> = {
     'logo': 'Logo Designer',
-    't-shirt': 'T-shirt Designer', 
+    't-shirt': 'T-shirt Designer',
     'social-media-post': 'Social Media Post Creator',
     'art': 'Art Generator',
     'poster': 'Poster Maker',
@@ -55,27 +55,30 @@ const DesignToolPage = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <div className="border-b border-border bg-card">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-4">
+        <div className="container  px-6 py-4 flex items-center justify-between  ">
+          <div className="flex items-center space-x-4 ">
             <Link to="/" className="p-2 hover:bg-accent rounded-lg transition-colors">
               <ArrowLeft className="w-5 h-5" />
             </Link>
             <h1 className="text-xl font-semibold">{toolName}</h1>
           </div>
-          
+
           <div className="flex items-center space-x-3">
+            <button className="btn-primary">
+              <Play className="w-4 h-4 mr-2" />
+              
+              <p className='hidden lg:block md:block'>Generate</p>
+            </button>
             <button className="btn-secondary">
               <Share2 className="w-4 h-4 mr-2" />
-              Share
+              <p className='hidden lg:block md:block'>Share</p>
             </button>
             <button className="btn-secondary">
               <Download className="w-4 h-4 mr-2" />
-              Download
+
+              <p className='hidden lg:block md:block'>Download</p>
             </button>
-            <button className="btn-primary">
-              <Play className="w-4 h-4 mr-2" />
-              Generate
-            </button>
+
           </div>
         </div>
       </div>
@@ -85,14 +88,14 @@ const DesignToolPage = () => {
         {/* Sidebar */}
         <div className="w-80 bg-card border-r border-border p-6">
           <h2 className="text-lg font-semibold mb-4">Templates</h2>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="design-card aspect-square bg-gradient-to-br from-primary/10 to-accent/20 p-4 flex items-center justify-center">
                 <span className="text-2xl">🎨</span>
               </div>
             ))}
           </div>
-          
+
           <h3 className="text-lg font-semibold mt-8 mb-4">Customization</h3>
           <div className="space-y-4">
             <div>
@@ -104,7 +107,7 @@ const DesignToolPage = () => {
                 <option>Bold</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium mb-2">Color Scheme</label>
               <div className="flex space-x-2">
@@ -113,11 +116,11 @@ const DesignToolPage = () => {
                 ))}
               </div>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium mb-2">Text</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 placeholder={`Enter ${displayName.toLowerCase()} text`}
                 className="w-full p-2 border border-border rounded-lg bg-background"
               />
@@ -145,20 +148,20 @@ const DesignToolPage = () => {
                     Upload an image to start customizing your {displayName.toLowerCase()}.
                   </p>
                   <div className='w-full flex justify-center'>
-                  <button
-                    onClick={() => fileInputRef.current?.click()}
-                    className="btn-primary flex items-center "
-                  >
-                    <Upload className="w-4 h-4 mr-2" />
-                    Upload
-                  </button>
-                  <input
-                    type="file"
-                    accept="image/*"
-                    ref={fileInputRef}
-                    onChange={handleUpload}
-                    className="hidden"
-                  />
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="btn-primary flex items-center "
+                    >
+                      <Upload className="w-4 h-4 mr-2" />
+                      Upload
+                    </button>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      ref={fileInputRef}
+                      onChange={handleUpload}
+                      className="hidden"
+                    />
                   </div>
                 </>
               )}
